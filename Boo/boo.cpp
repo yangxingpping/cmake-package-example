@@ -1,4 +1,4 @@
-#include <foo/Bar.hpp>
+#include <Bar.hpp>
 #include <cstdlib> // EXIT_SUCCESS
 #include <iostream> // std::cout
 

@@ -13,13 +13,13 @@
 
 ####
 # Set minimum version of CMake.
-cmake_minimum_required(VERSION 3.9) # GENERATOR_IS_MULTI_CONFIG
+cmake_minimum_required(VERSION 3.25) # GENERATOR_IS_MULTI_CONFIG
 
 ####
 # Set variables:
 #   * PROJECT_NAME
 #   * PROJECT_VERSION
-project(Foo VERSION 1.2.3)
+project(baz VERSION 1.2.3)
 
 # Debug Information Format:
 # * https://docs.microsoft.com/en-us/cpp/build/reference/z7-zi-zi-debug-information-format
@@ -86,8 +86,8 @@ endif()
 
 ####
 # Create targets
-add_library(bar "Source/foo/Bar.cpp" "Source/foo/Bar.hpp")
-add_library(baz "Source/foo/Baz.cpp" "Source/foo/Baz.hpp")
+aux_source_directory(./ A)
+add_library(baz ${A})
 
 ####
 # Properties of targets
@@ -97,7 +97,6 @@ add_library(baz "Source/foo/Baz.cpp" "Source/foo/Baz.hpp")
 #   * Debug: -DFOO_BAR_DEBUG=1
 #   * Release: -DFOO_BAR_DEBUG=0
 #   * other: -DFOO_BAR_DEBUG=0
-target_compile_definitions(bar PUBLIC "FOO_BAR_DEBUG=$<CONFIG:Debug>")
 target_compile_definitions(baz PUBLIC "FOO_BAZ_DEBUG=$<CONFIG:Debug>")
 
 # Generate:
@@ -112,7 +111,6 @@ set(baz_export "${generated_headers}/foo/BAZ_EXPORT.h")
 
 # https://cmake.org/cmake/help/v3.9/module/GenerateExportHeader.html
 include(GenerateExportHeader)
-generate_export_header(bar EXPORT_FILE_NAME ${bar_export})
 generate_export_header(baz EXPORT_FILE_NAME ${baz_export})
 
 # Global includes. Used by all targets
@@ -123,12 +121,10 @@ generate_export_header(baz EXPORT_FILE_NAME ${baz_export})
 #   * header can be included by: `#include <BAR_EXPORT.h>`
 target_include_directories(
     baz PUBLIC
-    "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/Source>"
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>"
     "$<BUILD_INTERFACE:${generated_headers}>"
 )
 
-# Link required library
-target_link_libraries(bar PUBLIC baz)
 
 # Installation (https://github.com/forexample/package-example) {
 
@@ -167,7 +163,7 @@ write_basic_package_version_file(
 #   * TARGETS_EXPORT_NAME
 #   * PROJECT_NAME
 configure_package_config_file(
-    "cmake/Config.cmake.in"
+    "../cmake/Config.cmake.in"
     "${project_config}"
     INSTALL_DESTINATION "${config_install_dir}"
 )
@@ -178,7 +174,7 @@ configure_package_config_file(
 #   * header location after install: <prefix>/include/foo/Bar.hpp
 #   * headers can be included by C++ code `#include <foo/Bar.hpp>`
 install(
-    TARGETS bar baz
+    TARGETS baz
     EXPORT "${TARGETS_EXPORT_NAME}"
     LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
@@ -190,7 +186,7 @@ install(
 #   * Source/foo/Bar.hpp -> <prefix>/include/foo/Bar.hpp
 #   * Source/foo/Baz.hpp -> <prefix>/include/foo/Baz.hpp
 install(
-    DIRECTORY "Source/foo"
+    DIRECTORY "baz"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
     FILES_MATCHING PATTERN "*.hpp"
 )
@@ -200,7 +196,7 @@ install(
 #   * ${CMAKE_CURRENT_BINARY_DIR}/.../BAZ_EXPORT.h -> <prefix>/include/foo/BAZ_EXPORT.h
 install(
     FILES "${bar_export}" "${baz_export}"
-    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/foo"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/baz"
 )
 
 # Config

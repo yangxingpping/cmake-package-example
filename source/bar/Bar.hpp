@@ -2,8 +2,8 @@
 #define FOO_BAR_HPP_
 
 #include <iostream> // std::cout
-#include <foo/Baz.hpp>
-#include <foo/BAR_EXPORT.h>
+#include <Baz.hpp>
+#include <BAR_EXPORT.h>
 
 namespace foo {
 

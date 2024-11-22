@@ -1,4 +1,4 @@
-#include <foo/Baz.hpp>
+#include <Baz.hpp>
 
 namespace foo {
 

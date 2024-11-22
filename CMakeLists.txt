@@ -9,5 +9,5 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
 enable_testing()
 
 # Monolithic version
-add_subdirectory(Foo)
+add_subdirectory(source)
 add_subdirectory(Boo)
