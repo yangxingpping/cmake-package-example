@@ -2,11 +2,10 @@
 #define FOO_BAZ_HPP_
 
 #include <iostream> // std::cout
-#include <foo/BAZ_EXPORT.h>
 
 namespace foo {
 
-class BAZ_EXPORT Baz {
+class Baz {
  public:
   static void say() {
 #if (FOO_BAZ_DEBUG)
