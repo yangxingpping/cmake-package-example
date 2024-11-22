@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(foo-monolithic)
+project(youngCMake)
 
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
