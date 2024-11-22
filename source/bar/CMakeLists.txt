@@ -189,7 +189,7 @@ install(
 #   * Source/foo/Baz.hpp -> <prefix>/include/foo/Baz.hpp
 install(
     DIRECTORY "bar"
-    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/bar"
     FILES_MATCHING PATTERN "*.hpp"
 )
 

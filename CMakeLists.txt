@@ -6,6 +6,8 @@ option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
 
+set(CMAKE_DEBUG_POSTFIX d)
+
 enable_testing()
 
 # Monolithic version
