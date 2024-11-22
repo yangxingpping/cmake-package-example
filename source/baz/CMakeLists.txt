@@ -186,7 +186,7 @@ install(
 #   * Source/foo/Bar.hpp -> <prefix>/include/foo/Bar.hpp
 #   * Source/foo/Baz.hpp -> <prefix>/include/foo/Baz.hpp
 install(
-    DIRECTORY "baz"
+    DIRECTORY "./"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/baz"
     FILES_MATCHING PATTERN "*.hpp"
 )
@@ -195,7 +195,7 @@ install(
 #   * ${CMAKE_CURRENT_BINARY_DIR}/.../BAR_EXPORT.h -> <prefix>/include/foo/BAR_EXPORT.h
 #   * ${CMAKE_CURRENT_BINARY_DIR}/.../BAZ_EXPORT.h -> <prefix>/include/foo/BAZ_EXPORT.h
 install(
-    FILES "${bar_export}" "${baz_export}"
+    FILES "${baz_export}"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/baz"
 )
 
