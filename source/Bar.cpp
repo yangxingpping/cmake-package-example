@@ -1,5 +1,5 @@
 #include <Bar.hpp>
-
+#include "spdlog/spdlog.h"
 namespace foo {
 
 void Bar::cpp_say() {
@@ -8,7 +8,7 @@ void Bar::cpp_say() {
 #else
   const char* m = "Bar.cpp (Not debug)";
 #endif
-  std::cout << m << std::endl;
+  SPDLOG_INFO(m);
 }
 
 } // namespace foo

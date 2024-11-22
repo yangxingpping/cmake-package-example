@@ -89,6 +89,8 @@ endif()
 aux_source_directory(./ A)
 add_library(bar ${A})
 
+target_link_libraries(bar PRIVATE spdlog::spdlog)
+
 ####
 # Properties of targets
 

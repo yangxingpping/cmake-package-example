@@ -1,9 +1,9 @@
 #ifndef FOO_BAR_HPP_
 #define FOO_BAR_HPP_
 
-#include <iostream> // std::cout
 #include <Baz.hpp>
 #include <BAR_EXPORT.h>
+#include "spdlog/spdlog.h"
 
 namespace foo {
 
@@ -16,7 +16,7 @@ class BAR_EXPORT Bar {
 #else
     const char* m = "Bar.hpp (Not debug)";
 #endif
-    std::cout << m << std::endl;
+    SPDLOG_INFO("{}", m);
     cpp_say();
   }
 

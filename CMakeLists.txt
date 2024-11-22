@@ -5,6 +5,8 @@ set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
 
 project(youngCMake)
 
+find_package(spdlog CONFIG REQUIRED)
+
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -14,6 +16,7 @@ IF(CMAKE_SYSTEM_NAME MATCHES "Windows")
   if(PROJECT_IS_TOP_LEVEL)
     set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR})
     set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
+    add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
   endif()
     add_definitions(-DOTL_ODBC)
     add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")

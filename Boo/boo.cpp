@@ -1,10 +1,9 @@
 #include <Bar.hpp>
-#include <cstdlib> // EXIT_SUCCESS
-#include <iostream> // std::cout
+#include "spdlog/spdlog.h"
 
 int main()
 {
-  std::cout << "Hello, Boo!" << std::endl;
+  SPDLOG_INFO("Hello, Boo!");
   foo::Bar::say();
   return 0;
 }

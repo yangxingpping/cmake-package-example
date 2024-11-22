@@ -1,7 +1,4 @@
-#ifndef FOO_BAZ_HPP_
-#define FOO_BAZ_HPP_
-
-#include <iostream> // std::cout
+#include "spdlog/spdlog.h"
 
 namespace foo {
 
@@ -13,7 +10,7 @@ class Baz {
 #else
     const char* m = "Baz.hpp (Not debug)";
 #endif
-    std::cout << m << std::endl;
+    SPDLOG_INFO(m);
     cpp_say();
   }
 
@@ -23,4 +20,3 @@ class Baz {
 
 } // namespace foo
 
-#endif // FOO_BAZ_HPP_
