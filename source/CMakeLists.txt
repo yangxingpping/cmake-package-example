@@ -98,6 +98,7 @@ add_library(bar ${A})
 #   * Release: -DFOO_BAR_DEBUG=0
 #   * other: -DFOO_BAR_DEBUG=0
 target_compile_definitions(bar PUBLIC "FOO_BAZ_DEBUG=$<CONFIG:Debug>")
+target_compile_definitions(bar PUBLIC "FOO_BAR_DEBUG=$<CONFIG:Debug>")
 
 # Generate:
 #   * ${CMAKE_CURRENT_BINARY_DIR}/generated_headers/foo/BAR_EXPORT.h with BAR_EXPORT
