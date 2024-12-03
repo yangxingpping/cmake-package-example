@@ -1,6 +1,8 @@
+#pragma once
 #include <Bar.hpp>
 #include "spdlog/spdlog.h"
-namespace foo {
+namespace bar
+{
 
 void Bar::cpp_say() {
 #if (FOO_BAR_DEBUG)

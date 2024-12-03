@@ -1,11 +1,10 @@
-#ifndef FOO_BAR_HPP_
-#define FOO_BAR_HPP_
+#pragma once
 
 #include <Baz.hpp>
 #include <BAR_EXPORT.h>
 #include "spdlog/spdlog.h"
 
-namespace foo {
+namespace bar {
 
 class BAR_EXPORT Bar {
  public:
@@ -26,4 +25,3 @@ class BAR_EXPORT Bar {
 
 }
 
-#endif // FOO_BAR_HPP_

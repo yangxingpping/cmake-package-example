@@ -4,6 +4,6 @@
 int main()
 {
   SPDLOG_INFO("Hello, Boo!");
-  foo::Bar::say();
+  bar::Bar::say();
   return 0;
 }

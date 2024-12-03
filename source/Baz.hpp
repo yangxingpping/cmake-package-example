@@ -1,6 +1,8 @@
+#pragma once
 #include "spdlog/spdlog.h"
 
-namespace foo {
+namespace bar
+{
 
 class Baz {
  public:
