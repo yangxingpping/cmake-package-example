@@ -1,19 +1,21 @@
 #pragma once
 
 #include <Baz.hpp>
-#include <BAR_EXPORT.h>
+#include <Demo_EXPORT.h>
 #include "spdlog/spdlog.h"
 
-namespace bar {
+namespace Demo
+{
 
-class BAR_EXPORT Bar {
+class DEMO_EXPORT Ba
+	{
  public:
   static void say() {
     Baz::say();
-#if (FOO_BAR_DEBUG)
-    const char* m = "Bar.hpp (Debug)";
+#if (FOO_Demo_DEBUG)
+    const char* m = "Demo.hpp (Debug)";
 #else
-    const char* m = "Bar.hpp (Not debug)";
+    const char* m = "Demo.hpp (Not debug)";
 #endif
     SPDLOG_INFO("{}", m);
     cpp_say();

@@ -1,7 +1,7 @@
 
 cmake_minimum_required(VERSION 3.25) # GENERATOR_IS_MULTI_CONFIG
 
-project(bar VERSION 1.2.3)
+project(Demo VERSION 1.2.3)
 
 
 if(MSVC)
@@ -34,28 +34,28 @@ endif()
 ####
 # Create targets
 aux_source_directory(./ A)
-add_library(bar ${A})
+add_library(Demo ${A})
 
-target_link_libraries(bar PRIVATE spdlog::spdlog)
+target_link_libraries(Demo PRIVATE spdlog::spdlog)
 
 ####
 # Properties of targets
 
 # Add definitions for targets
 # Values:
-#   * Debug: -DFOO_BAR_DEBUG=1
-#   * Release: -DFOO_BAR_DEBUG=0
-#   * other: -DFOO_BAR_DEBUG=0
-target_compile_definitions(bar PUBLIC "bar_DEBUG=$<CONFIG:Debug>")
+#   * Debug: -DFOO_Demo_DEBUG=1
+#   * Release: -DFOO_Demo_DEBUG=0
+#   * other: -DFOO_Demo_DEBUG=0
+target_compile_definitions(Demo PUBLIC "Demo_DEBUG=$<CONFIG:Debug>")
 
 set(generated_headers "${CMAKE_CURRENT_BINARY_DIR}/generated_headers")
-set(bar_export "${generated_headers}/bar_EXPORT.h")
+set(Demo_export "${generated_headers}/Demo_EXPORT.h")
 
 include(GenerateExportHeader)
-generate_export_header(bar EXPORT_FILE_NAME ${bar_export})
+generate_export_header(Demo EXPORT_FILE_NAME ${Demo_export})
 
 target_include_directories(
-    bar PUBLIC
+    Demo PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>"
     "$<BUILD_INTERFACE:${generated_headers}>"
 )
@@ -94,7 +94,7 @@ configure_package_config_file(
 )
 
 install(
-    TARGETS bar
+    TARGETS Demo
     EXPORT "${TARGETS_EXPORT_NAME}"
     LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
@@ -103,7 +103,7 @@ install(
 )
 
 # Headers:
-#   * Source/foo/Bar.hpp -> <prefix>/include/foo/Bar.hpp
+#   * Source/foo/Demo.hpp -> <prefix>/include/foo/Demo.hpp
 #   * Source/foo/Baz.hpp -> <prefix>/include/foo/Baz.hpp
 install(
     DIRECTORY "./"
@@ -112,9 +112,9 @@ install(
 )
 
 # Export headers:
-#   * ${CMAKE_CURRENT_BINARY_DIR}/.../bar_EXPORT.h -> <prefix>/include/bar_EXPORT.h
+#   * ${CMAKE_CURRENT_BINARY_DIR}/.../Demo_EXPORT.h -> <prefix>/include/Demo_EXPORT.h
 install(
-    FILES "${bar_export}"
+    FILES "${Demo_export}"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 

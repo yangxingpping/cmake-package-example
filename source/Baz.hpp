@@ -1,7 +1,7 @@
 #pragma once
 #include "spdlog/spdlog.h"
 
-namespace bar
+namespace Demo
 {
 
 class Baz {

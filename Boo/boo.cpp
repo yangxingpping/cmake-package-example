@@ -1,9 +1,9 @@
-#include <Bar.hpp>
+#include <Ba.hpp>
 #include "spdlog/spdlog.h"
 
 int main()
 {
   SPDLOG_INFO("Hello, Boo!");
-  bar::Bar::say();
+  Demo::Ba::say();
   return 0;
 }
